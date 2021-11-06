@@ -1,6 +1,14 @@
-let x = 0
+let sensor = 0
 basic.showIcon(IconNames.Happy)
+let tm = TM1637.create(
+DigitalPin.P2,
+DigitalPin.P3,
+7,
+4
+)
 basic.forever(function () {
-    x = pins.analogReadPin(AnalogPin.P1)
-    basic.showNumber(x)
+    sensor = pins.analogReadPin(AnalogPin.P1)
+    basic.showNumber(sensor)
+    tm.on()
+    tm.showNumber(sensor)
 })
